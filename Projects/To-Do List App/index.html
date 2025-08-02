@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+      integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <p><a href="#outer-container">CristianChiorescu</a></p>
+      </div>
+      <div class="title">
+        <p>To-Do List</p>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="outer-container">
+        <div class="container frosted" id="add-task-container">
+          <h1>My Tasks</h1>
+          <form action="" class="container flex" id="input-form">
+            <input type="text" id="input" placeholder="Add a new task..." />
+            <button type="submit" id="submit-button">Submit</button>
+          </form>
+        </div>
+        <div class="frosted" id="divider" hidden></div>
+        <ul id="task-list"></ul>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="footer-content">
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://github.com/your-username"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/your-username"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright-text">
+          &copy; <span id="current-year">2025</span> Cristian Chiorescu. All
+          Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

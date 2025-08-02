@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+      integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <p><a href="#input-container">CristianChiorescu</a></p>
+      </div>
+      <div class="title">
+        <p>Weather App</p>
+      </div>
+    </header>
+    <main>
+      <div class="container-outer" id="input-container">
+        <div class="flex" id="input-container-top">
+          <input
+            type="text"
+            id="input"
+            name="input"
+            placeholder="City Name..."
+          />
+          <button class="submit" id="submit-button">Submit</button>
+        </div>
+        <p id="error-message"></p>
+      </div>
+      <!--setting up all results containers-->
+      <div class="container-outer" id="results-container" hidden>
+        <div class="container" id="container-top-half">
+          <div class="container frosted flex" id="container-main">
+            <div class="container" id="container-main-left">
+              <img src="images/sun.svg" alt="placeholder" id="main-picture" />
+            </div>
+            <div class="container left-divider" id="container-main-right">
+              <p id="degrees">22°</p>
+              <p id="description">Clear Sky</p>
+              <p id="place">Calgary, CA</p>
+            </div>
+          </div>
+          <div class="container-other" id="container-other">
+            <div class="container frosted" id="container-other-top">
+              <div class="container" id="container-other-top-top">
+                <p id="current-time-date">Current Time, Date</p>
+              </div>
+              <div
+                class="container flex top-divider"
+                id="container-other-top-bottom"
+              >
+                <p id="high-low">H: L:</p>
+                <p id="feels-like">Feels Like:</p>
+              </div>
+            </div>
+            <div class="container frosted flex" id="container-other-bottom">
+              <div class="container" id="container-other-bottom-left">
+                <p id="humidity">Humidity:</p>
+                <p id="wind">Wind:</p>
+              </div>
+              <div
+                class="container left-divider"
+                id="container-other-bottom-right"
+              >
+                <p id="sunrise">Sunrise:</p>
+                <p id="sunset">Sunset:</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container" id="container-bottom-half">
+          <div class="container frosted" id="day-2">
+            <p id="day-2-date">Friday</p>
+            <img src="images/sun.svg" alt="placeholder" id="day-2-picture" />
+            <p id="day-2-high-low">23° / 12°</p>
+          </div>
+          <div class="container frosted" id="day-3">
+            <p id="day-3-date">Friday</p>
+            <img src="images/sun.svg" alt="placeholder" id="day-3-picture" />
+            <p id="day-3-high-low">23° / 12°</p>
+          </div>
+          <div class="container frosted" id="day-4">
+            <p id="day-4-date">Friday</p>
+            <img src="images/sun.svg" alt="placeholder" id="day-4-picture" />
+            <p id="day-4-high-low">23° / 12°</p>
+          </div>
+          <div class="container frosted" id="day-5">
+            <p id="day-5-date">Friday</p>
+            <img src="images/sun.svg" alt="placeholder" id="day-5-picture" />
+            <p id="day-5-high-low">23° / 12°</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="footer-content">
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://github.com/Cristian-Chiorescu"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/your-username"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright-text">
+          &copy; <span id="current-year">2025</span> Cristian Chiorescu. All
+          Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

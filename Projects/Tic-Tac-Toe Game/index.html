@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+      integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <p><a href="#outer-container">CristianChiorescu</a></p>
+      </div>
+      <div class="title">
+        <p>Tic-Tac-Toe Game</p>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="outer-container">
+        <div class="container frosted" id="status-display"></div>
+        <div class="container grid" id="game-board">
+          <div class="frosted cell" data-cell-index="0"></div>
+          <div class="frosted cell" data-cell-index="1"></div>
+          <div class="frosted cell" data-cell-index="2"></div>
+          <div class="frosted cell" data-cell-index="3"></div>
+          <div class="frosted cell" data-cell-index="4"></div>
+          <div class="frosted cell" data-cell-index="5"></div>
+          <div class="frosted cell" data-cell-index="6"></div>
+          <div class="frosted cell" data-cell-index="7"></div>
+          <div class="frosted cell" data-cell-index="8"></div>
+        </div>
+        <button id="reset-button" hidden>Reset</button>
+      </div>
+    </main>
+    <footer id="footer frosted">
+      <div class="footer-content">
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://github.com/Cristian-Chiorescu"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/your-username"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright-text">
+          &copy; <span id="current-year">2025</span> Cristian Chiorescu. All
+          Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
