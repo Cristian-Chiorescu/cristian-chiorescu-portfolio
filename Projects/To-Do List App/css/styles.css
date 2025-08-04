@@ -74,7 +74,7 @@ header {
   padding: 0 10%;
 }
 
-.logo {
+.logo a {
   font-family: "Pacifico", sans-serif;
   background-image: var(--accent-color);
   color: transparent;
@@ -92,6 +92,20 @@ header {
 
 .title {
   font-weight: 700;
+}
+
+.back-to-portfolio-link:link,
+.back-to-portfolio-link:visited {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+.back-to-portfolio-link:hover {
+  color: var(--container-color);
+  background-color: var(--text-color);
 }
 
 /*container setup*/
@@ -140,9 +154,13 @@ header {
 }
 
 #input-form {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  width: 90%;
+  width: 100%;
 }
 
 /*font setup*/
@@ -218,8 +236,8 @@ li span {
 }
 
 #input {
-  background: transparent;
-  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   flex-grow: 1;
   outline: none;
   color: #f0f0f0;
@@ -266,4 +284,11 @@ footer a {
 .copyright-text {
   font-size: 0.9rem;
   margin: 0;
+}
+
+@media (max-width: 767px) {
+  #input-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

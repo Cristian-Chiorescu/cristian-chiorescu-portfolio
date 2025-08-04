@@ -32,7 +32,13 @@ const checkResult = () => {
             gameArray[array[0]]=== gameArray[array[2]]&&
             gameArray[array[0]]!== ""
         ){
+            
             isGameActive = false
+            let winningArray = array
+            winningArray.forEach((index)=>{
+                const cell = document.querySelector(`[data-cell-index="${index}"]`)
+                cell.classList.add("highlight")
+            })
             resetButton.removeAttribute("hidden")
             statusDisplay.classList.remove("turn-x")
             statusDisplay.classList.remove("turn-o")
@@ -95,6 +101,7 @@ resetButton.addEventListener("click", ()=>{
         cell.textContent = ""
         cell.classList.remove("x-played")
         cell.classList.remove("o-played")
+        cell.classList.remove("highlight")
     })
     statusDisplay.classList.remove("highlight")
     statusDisplay.style.backgroundColor = ""

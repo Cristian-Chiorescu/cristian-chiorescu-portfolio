@@ -1,5 +1,4 @@
 :root {
-  --primary-color: #eca03d;
   --container-color: #ffffff;
   --text-color: #222222;
   --background-color: #f8f8f8;
@@ -24,24 +23,21 @@ body {
   color: var(--text-color);
   overflow-x: hidden;
   background: #0d1117;
-  background-image:
-      /* Top-left cyan blob */ radial-gradient(
+  background-image: radial-gradient(
       circle at 15% 25%,
       rgba(0, 255, 255, 0.2),
       transparent 30%
     ),
-    /* Bottom-right purple blob */
-      radial-gradient(
-        circle at 85% 75%,
-        rgba(131, 56, 236, 0.25),
-        transparent 40%
-      ),
-    /* Center blue blob */
-      radial-gradient(
-        ellipse at 50% 50%,
-        rgba(0, 123, 255, 0.15),
-        transparent 50%
-      );
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(131, 56, 236, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(0, 123, 255, 0.15),
+      transparent 50%
+    );
   background-size: 200% 200%;
   animation: moveGradient 60s ease infinite;
   background-attachment: fixed;
@@ -459,7 +455,7 @@ nav {
   color: #ccc;
   text-decoration: none;
   font-weight: 500;
-  display: inline-block; /* Allows us to add margin */
+  display: inline-block;
   margin-bottom: 5rem;
   transition: all 0.3s ease;
 }
@@ -472,19 +468,19 @@ nav {
 
 footer {
   width: 100%;
-  background-color: var(--text-color); /* A dark background color */
-  color: #ccc; /* A light grey for the text */
+  background-color: var(--text-color);
+  color: #ccc;
   padding: 2rem 1rem;
   text-align: center;
 }
 
 .social-links {
-  list-style: none; /* Removes bullet points */
+  list-style: none;
   padding: 0;
-  margin: 0 0 1rem 0; /* Adds space below the icons */
-  display: flex; /* Aligns icons in a row */
-  justify-content: center; /* Centers the icons horizontally */
-  gap: 1.5rem; /* Space between icons */
+  margin: 0 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 footer a {
