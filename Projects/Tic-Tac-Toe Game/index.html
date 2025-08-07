@@ -34,11 +34,18 @@
         >
       </div>
       <div class="title">
-        <p>Tic-Tac-Toe Game</p>
+        <p>Tic-Tac-Toe</p>
       </div>
     </header>
     <main>
-      <div class="container" id="outer-container">
+      <div class="container" id="selection-screen">
+        <h2>Choose your opponent</h2>
+        <div class="flex" id="selection-buttons">
+          <button id="vs-player">Player vs. Player</button>
+          <button id="vs-comp">Player vs. Computer</button>
+        </div>
+      </div>
+      <div class="container" id="outer-container" hidden>
         <div class="container frosted" id="status-display"></div>
         <div class="container grid" id="game-board">
           <div class="frosted cell" data-cell-index="0"></div>

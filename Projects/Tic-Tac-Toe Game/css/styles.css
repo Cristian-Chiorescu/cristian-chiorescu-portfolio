@@ -1,13 +1,11 @@
 :root {
-  --primary-color: #eca03d;
   --container-color: #ffffff;
   --text-color: #222222;
   --background-color: #f8f8f8;
   --accent-color: linear-gradient(140deg, #065143, #9ad4d6);
 }
-/* --- CSS RESET & BASIC SETUP --- */
+/* --- css reset --- */
 
-/* A simple reset for consistent box-sizing */
 *,
 *::before,
 *::after {
@@ -16,12 +14,12 @@
   padding: 0;
 }
 
-/* Set mobile-first defaults for the body */
+/* mobile defaults */
 body {
-  font-family: "Inter", sans-serif; /* Choose a real font later */
+  font-family: "Inter", sans-serif;
   line-height: 1.6;
-  background-color: var(--background-color); /* Light grey background */
-  color: var(--text-color); /* Dark text color */
+  background-color: var(--background-color);
+  color: var(--text-color);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -76,6 +74,7 @@ header {
   height: 3rem;
   background-color: var(--container-color);
   padding: 0 10%;
+  font-size: clamp(0.7rem, 2vw, 1rem);
 }
 
 .logo a {
@@ -95,7 +94,11 @@ header {
 }
 
 .title {
-  font-weight: 700;
+  font-weight: 1000;
+}
+
+.portfolio-link {
+  font-weight: 500;
 }
 
 .back-to-portfolio-link:link,
@@ -114,9 +117,39 @@ header {
 
 /*container setup*/
 
+#selection-screen {
+  text-align: center;
+  min-width: 0;
+}
+
+#selection-screen h2 {
+  padding: 2rem;
+  border-bottom: 1px black solid;
+}
+#selection-buttons {
+  padding: 2rem;
+  gap: 5vw;
+}
+
+#selection-buttons button {
+  border: none;
+  background-color: var(--text-color);
+  color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+#selection-buttons button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: var(--text-color);
+}
+
 #outer-container {
   text-align: center;
-  background-color: #dfcec0; /* Sandy Beige */
+  background-color: #dfcec0;
   background-image: radial-gradient(
       at 15% 15%,
       hsla(25, 85%, 70%, 0.3) 0px,
@@ -148,11 +181,11 @@ header {
 }
 
 .x-played {
-  color: rgba(47, 79, 79, 0.89); /* Dark Slate Gray / Muted Teal */
+  color: rgba(47, 79, 79, 0.89);
 }
 
 .o-played {
-  color: rgba(205, 92, 92, 0.76); /* Indian Red / Terracotta */
+  color: rgba(205, 92, 92, 0.76);
 }
 
 #status-display {
@@ -163,11 +196,11 @@ header {
 }
 
 #status-display.turn-x {
-  background-color: rgba(47, 79, 79, 0.836); /* Dark Slate Gray / Muted Teal */
+  background-color: rgba(47, 79, 79, 0.836);
 }
 
 #status-display.turn-o {
-  background-color: rgba(205, 92, 92, 0.767); /* Indian Red / Terracotta */
+  background-color: rgba(205, 92, 92, 0.767);
 }
 
 /*button setup*/
@@ -188,23 +221,23 @@ header {
   color: var(--text-color);
 }
 
-/*footer styling*/
+/*footer setup*/
 
 footer {
   width: 100%;
-  background-color: var(--text-color); /* A dark background color */
-  color: #ccc; /* A light grey for the text */
+  background-color: var(--text-color);
+  color: #ccc;
   padding: 2rem 1rem;
   text-align: center;
 }
 
 .social-links {
-  list-style: none; /* Removes bullet points */
+  list-style: none;
   padding: 0;
-  margin: 0 0 1rem 0; /* Adds space below the icons */
-  display: flex; /* Aligns icons in a row */
-  justify-content: center; /* Centers the icons horizontally */
-  gap: 1.5rem; /* Space between icons */
+  margin: 0 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 footer a {

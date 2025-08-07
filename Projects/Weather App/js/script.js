@@ -45,6 +45,7 @@ const fetchData = async(input) =>{
         let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`)
         let data = await res.json();
         displayWeather(data)
+        console.log(data)
         res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${apiKey}&units=metric`)
         data = await res.json();
         displayForecast(data)
@@ -56,8 +57,33 @@ const fetchData = async(input) =>{
 }
 
 const displayWeather=(data)=>{
+
+    const {main, name, sys, timezone, weather, wind} = data;
+    const {feels_like, humidity, temp} = main;
+    const {country, sunrise, sunset} = sys;
+    const {description, icon} = weather[0];
+    const {deg, speed} = wind
+
+    const offsetHours = timezone / 3600
+    let timeZoneString
+
+    if(offsetHours>=0){
+        timeZoneString = `Etc/GMT-${offsetHours}` 
+    }
+    else if(offsetHours<0){
+        timeZoneString = `Etc/GMT+${offsetHours*(-1)}`
+    }
+
+    const timeOptions = {
+        timeZone: timeZoneString,
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+    }
+
     const currentTime= new Date()
     const options= {
+        timeZone: timeZoneString,
         weekday: "long",
         month: "long",
         day:"numeric",
@@ -66,12 +92,6 @@ const displayWeather=(data)=>{
         hour12: true
     }
     currentTimeDate.innerText=`${new Intl.DateTimeFormat("en-US",options).format(currentTime)}`
-
-    const {main, name, sys, weather, wind} = data;
-    const {feels_like, humidity, temp} = main;
-    const {country, sunrise, sunset} = sys;
-    const {description, icon} = weather[0];
-    const {deg, speed} = wind
 
     place.innerText= name;
     place.innerText+= `, ${country}`
@@ -87,8 +107,13 @@ const displayWeather=(data)=>{
 
     descriptionMain.innerText=newDescription
 
-    const sunriseCurrent = (new Date(sunrise*1000)).toLocaleTimeString()
-    const sunsetCurrent = (new Date(sunset*1000)).toLocaleTimeString()
+    const sunriseDate = new Date(sunrise * 1000);
+    const sunsetDate = new Date(sunset * 1000);
+
+    const formatter = new Intl.DateTimeFormat("en-US", timeOptions)
+
+    const sunriseCurrent = formatter.format(sunriseDate);
+    const sunsetCurrent = formatter.format(sunsetDate);
 
     sunriseMain.innerText=`Sunrise: ${sunriseCurrent}`
     sunsetMain.innerText= `Sunset: ${sunsetCurrent}`

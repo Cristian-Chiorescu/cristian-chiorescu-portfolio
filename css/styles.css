@@ -115,6 +115,7 @@ header {
   background-image: var(--accent-color);
   color: transparent;
   background-clip: text;
+  font-size: clamp(0.7rem, 2vw, 1rem);
 }
 
 .logo a:link,

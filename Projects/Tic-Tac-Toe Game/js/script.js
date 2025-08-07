@@ -2,12 +2,17 @@ const statusDisplay = document.getElementById("status-display")
 const gameBoard = document.getElementById("game-board")
 const resetButton = document.getElementById("reset-button")
 const cells = document.querySelectorAll(".cell")
+const gameContainer = document.getElementById("outer-container")
+const selectionScreen = document.getElementById("selection-screen")
+const vsPlayer = document.getElementById("vs-player")
+const vsComp = document.getElementById("vs-comp")
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
 
 let gameArray = ["","","","","","","","","",]
 let currentPlayer = "X"
 let isGameActive = true
+let isVsComputer
 
 
 statusDisplay.textContent = `${currentPlayer}'s turn to make a move...`
@@ -64,6 +69,20 @@ const checkResult = () => {
     })
 }
 
+vsPlayer.addEventListener("click", ()=>{
+    selectionScreen.setAttribute("hidden", "")
+    gameContainer.removeAttribute("hidden")
+    isVsComputer = false
+    isGameActive = true
+})
+
+vsComp.addEventListener("click", ()=>{
+    selectionScreen.setAttribute("hidden", "")
+    gameContainer.removeAttribute("hidden")
+    isVsComputer = true
+    isGameActive = true
+})
+
 
 cells.forEach((cell)=>{
    cell.addEventListener("click", ()=>{
@@ -110,5 +129,6 @@ resetButton.addEventListener("click", ()=>{
     currentPlayer = "X"
     statusDisplay.textContent = `${currentPlayer}'s turn to make a move...`
     resetButton.setAttribute("hidden", "")
-    isGameActive = true
+    selectionScreen.removeAttribute("hidden")
+    gameContainer.setAttribute("hidden", "")
 })
