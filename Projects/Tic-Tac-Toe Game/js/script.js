@@ -32,12 +32,13 @@ const winningConditions = [
 
 
 const checkResult = () => {
-    winningConditions.forEach((array) =>{
+    let roundWon = false
+    for(const array of winningConditions){
         if(gameArray[array[0]]=== gameArray[array[1]]&&
             gameArray[array[0]]=== gameArray[array[2]]&&
             gameArray[array[0]]!== ""
         ){
-            
+            roundWon = true
             isGameActive = false
             let winningArray = array
             winningArray.forEach((index)=>{
@@ -47,6 +48,7 @@ const checkResult = () => {
             resetButton.removeAttribute("hidden")
             statusDisplay.classList.remove("turn-x")
             statusDisplay.classList.remove("turn-o")
+            statusDisplay.classList.remove("draw")
             statusDisplay.classList.add("highlight")
             statusDisplay.textContent=`${currentPlayer} is the winner!`
             if(currentPlayer==="X"){
@@ -58,15 +60,17 @@ const checkResult = () => {
                 statusDisplay.classList.add("turn-o")
              
         }
+        break
         }
-        else if(!gameArray.includes("")){
+        if(roundWon=== false && !gameArray.includes("")){
             isGameActive = false
             resetButton.removeAttribute("hidden")
             statusDisplay.classList.add("highlight")
-            statusDisplay.style.backgroundColor = "var(--text-color)"
+            statusDisplay.classList.add("draw")
             statusDisplay.textContent=`It's a draw!`
         }
-    })
+    }
+    console.log(statusDisplay.classList)
 }
 
 vsPlayer.addEventListener("click", ()=>{
@@ -84,33 +88,69 @@ vsComp.addEventListener("click", ()=>{
 })
 
 
-cells.forEach((cell)=>{
-   cell.addEventListener("click", ()=>{
-    const clickedCellIndex = cell.dataset.cellIndex
-    if(isGameActive && gameArray[clickedCellIndex] === ""){
-        gameArray[clickedCellIndex] = currentPlayer
-        cell.textContent = currentPlayer
-        cell.classList.add(`${currentPlayer.toLowerCase()}-played`)
+const handleMove = (cellIndex) => {
+    gameArray[cellIndex] = currentPlayer
+    const cell = document.querySelector(`[data-cell-index="${cellIndex}"]`);
+    cell.textContent = currentPlayer
+    cell.classList.add(`${currentPlayer.toLowerCase()}-played`)
+    checkResult()
+}
 
-        checkResult()
-        if(currentPlayer==="X" && isGameActive === true){
-            currentPlayer = "O"
-            statusDisplay.classList.remove("turn-x")
-            statusDisplay.classList.add("turn-o")
-        }
-        else if(currentPlayer = "O" && isGameActive === true){
-            currentPlayer = "X"
-            statusDisplay.classList.remove("turn-o")
+const switchPlayer = () => {
+    currentPlayer = currentPlayer === "X" ? "O":"X"
+    statusDisplay.textContent = `${currentPlayer}'s turn to make a move...`
+    if(currentPlayer==="X"){
+        statusDisplay.classList.remove("turn-o")
             statusDisplay.classList.add("turn-x")
-        }
-        if(isGameActive === true){
-            statusDisplay.textContent = `${currentPlayer}'s turn to make a move...`
-        }
     }
     else{
-        return
+        statusDisplay.classList.remove("turn-x")
+            statusDisplay.classList.add("turn-o")
     }
-}) 
+}
+
+const computerTurn = () => {
+    let emptyIndices = []
+        gameArray.forEach((cell, index) =>{
+        if(cell === ""){
+                    emptyIndices.push(index)
+                }
+            })
+        const randomIndex = Math.floor(Math.random() * emptyIndices.length)
+            const chosenCellIndex = emptyIndices[randomIndex]
+            handleMove(chosenCellIndex)
+            if(isGameActive === true){
+                switchPlayer()
+            }
+}
+
+const handleCellClick = (clickedCell) => {
+   const clickedCellIndex = clickedCell.dataset.cellIndex
+    
+   if(isGameActive === false || gameArray[clickedCellIndex] !== ""){
+    return
+   }
+
+   handleMove(clickedCellIndex)
+
+   if(isGameActive === true){
+    switchPlayer()
+    if(isVsComputer && currentPlayer === "O" && isGameActive === true){
+        gameBoard.classList.add("board-locked")
+        setTimeout(()=>{
+            computerTurn()
+            gameBoard.classList.remove("board-locked")
+        }, 750)
+        
+    }
+   }
+}
+
+
+cells.forEach((cell)=>{
+   cell.addEventListener("click", ()=>{
+    handleCellClick(cell)
+   }) 
 })
 
 
@@ -118,13 +158,11 @@ resetButton.addEventListener("click", ()=>{
     gameArray = ["","","","","","","","","",]
     cells.forEach((cell)=>{
         cell.textContent = ""
-        cell.classList.remove("x-played")
-        cell.classList.remove("o-played")
-        cell.classList.remove("highlight")
+        cell.classList.remove("x-played", "o-played", "highlight")
     })
-    statusDisplay.classList.remove("highlight")
+    statusDisplay.classList.remove("highlight", "turn-x", "turn-o", "draw")
     statusDisplay.style.backgroundColor = ""
-    statusDisplay.classList.remove("turn-o")
+
     statusDisplay.classList.add("turn-x")
     currentPlayer = "X"
     statusDisplay.textContent = `${currentPlayer}'s turn to make a move...`
