@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* mobile defaults */
 body {
   font-family: "Inter", sans-serif;
@@ -288,6 +292,7 @@ nav {
 #skills,
 #contact {
   margin: 5rem 0;
+  scroll-margin-top: 100px;
 }
 
 #about-container-outer {
@@ -377,7 +382,7 @@ nav {
 
 #skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1.5rem;
 }
 
@@ -543,5 +548,8 @@ footer a {
   }
   #contact-container {
     grid-template-columns: 1fr 1fr;
+  }
+  #skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 }
